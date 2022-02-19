@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../menu-item/menu-item.styles.scss';
+import { useNavigate } from "react-router-dom";
 
-const MenuItem = ({ title, imageUrl, size }) => {
+//As withRouter gone and useHistory in version6 of react-router, we have to use useNavigate hook to imitate the old withRounter// 
+
+const MenuItem = ({ title, imageUrl, size, linkUrl}) => {
+    const navigate = useNavigate();
+
     return (
-        <div className={`${size} menu-item`}>
+        <div className={`${size} menu-item`} onClick={() => navigate(`${linkUrl}`)}>
             <div 
                 className="background-image"
                 style={{
@@ -18,5 +23,4 @@ const MenuItem = ({ title, imageUrl, size }) => {
     )
 }
 
-export default MenuItem
-
+export default MenuItem;
